@@ -1,0 +1,100 @@
+
+Class THE_APPLICATION_IDEA
+
+    # I think that this initializer stuff may need to go in a different file
+
+    attr accessor :name
+
+    def initialize()
+
+    end
+
+    def into
+        puts "Welcome to the Youtube Channel CLI information search! Please select from the following options!"
+            enter_channel_name
+            exit
+        end
+        exit
+    end
+
+    def enter_channel_name(name)
+        puts "Please enter the name of a channel that you would like to learn more about."
+            if channel_name = true
+                channel_options
+                #should I make a method about checking if the input is true separate of this then call the method?
+            else
+                puts "I'm sorry. I could not find that channel. Please enter a channel or type exit to leave the application"
+                    if !exit 
+                        enter_channel_name
+                    else 
+                        exit
+                    end
+            end
+    end
+
+    def channel_options
+        puts "Here is what you can learn about #{enter_channel_name}"
+        while @input !exit
+            channel_id
+            channel_views
+            channel_videos
+            #will I need more? Should I figure out how to do top 5 videos instead or something?
+        end
+        exit
+    end
+
+    def channel_id
+        puts "This channel's ID is #{item.fetch("id")}.  Please type return to return to the options screen, or type exit to leave the application"
+        #will need to find out how to link cross files
+            if @input = return
+                return
+            elsif @input  = exit
+                exit
+            else 
+                "That is not a proper input please try again"
+                (#will I need to put something else here to start it over?)
+            end 
+    end
+
+    def channel_views
+         puts "This channel's ID is #{item.fetch("statistics").fetch("viewCount")}.  Please type return to return to the options screen, or type exit to leave the application"
+        #will need to find out how to link cross files
+            if @input = return
+                return
+            elsif @input  = exit
+                exit
+            else 
+                "That is not a proper input please try again"
+                (#will I need to put something else here to start it over?)
+            end 
+    end
+
+    def channel_videos
+        puts "Here is a list of this channel's videos! #{some_list_this_will_change}. Please type return to return to the options screen, or type exit to leave the application"
+        #will need to find out how to link cross files
+            if @input = return
+                return
+            elsif @input  = exit
+                exit
+            else 
+                "That is not a proper input please try again"
+                (#will I need to put something else here to start it over?)
+            end 
+        #need to find this code from the online guide, translate it to a file in here, 
+        #then find a way to link that file so I can pull it from here
+    end
+
+    def exit
+        "Thank you for trying the Youtube Channel CLI information search!"
+        #something to close the application?
+    end 
+
+    def return
+        enter_channel_name
+    end
+
+    def user_input
+        @input = get.strip
+    end
+
+end
