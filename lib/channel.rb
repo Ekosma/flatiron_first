@@ -45,29 +45,14 @@ class Channel
       client_id, SCOPE, token_store)
     user_id = 'default'
     credentials = authorizer.get_credentials(user_id)
-      url = authorizer.get_authorization_url(base_url: REDIRECT_URI)
-      puts "Open the following URL in the browser and enter the " +
-          "resulting code after authorization"
-      puts url
-      code = gets
-      credentials = authorizer.get_and_store_credentials_from_code(
-        user_id: user_id, code: code, base_url: REDIRECT_URI)
+    url = authorizer.get_authorization_url(base_url: REDIRECT_URI)
+    puts "Open the following URL in the browser and enter the " +
+        "resulting code after authorization"
+    puts url
+    code = gets
+    credentials = authorizer.get_and_store_credentials_from_code(
+      user_id: user_id, code: code, base_url: REDIRECT_URI)
     credentials
-  end
-
-  def refresh_oauth
-    strategy = OmniAuth::Strategies::GoogleOauth2.new(
-      nil,
-      '274331698386-li42fakf16vq6q6ctjl4hgh2k73a7jch.apps.googleusercontent.com',
-      'PncVRAA3KxTm8LSCqOFYPEIF',
-    )
-    client = strategy.client
-    token = OAuth2::AccessToken.new(
-      client,
-      "ya29.a0AfH6SMCMFU3NJCY1vU9ungJAZtlhfENu7MbaDXmmJ3QxCO_-YSmOntezE6_HX0KRtDYVQpLIZSiOACP-jpT9dWNBD6Lsidbheb0kyWop0lppUqCvhyyTsPbDSYOxUI1arOZ6dd0UccAhk2FsmI4WIL7zDuKF",
-      refresh_token: "1//04TQMsv-C8IwQCgYIARAAGAQSNwF-L9IrNiTYlfqOWRwTUeiWeA3F29Ujp7n-Y3u_7H6EtiVjdXZOI3IGirMigBz6DGyg4fbIqE0",
-    )
-    token.refresh!
   end
 
   def channels_info_by_username(service, part, **params)
@@ -75,10 +60,11 @@ class Channel
     item = JSON.parse(response).fetch("items")[0]
     @name = item.fetch("snippet").fetch("title")
     @id = item.fetch("id")
-    @view_count = item.fetch("statistics").fetch("viewCount")
-    @date_created = item.fetch("snippet").fetch("publishedAt")
-    @description = item.fetch("snippet").fetch("description")
-    print(item)
+    @view_count = "The total views for this channel is: #{item.fetch("statistics").fetch("viewCount")}."
+    @date_created = "This channels was created: #{item.fetch("snippet").fetch("publishedAt")}."
+    @description = "This channels description is the following: #{item.fetch("snippet").fetch("description")}."
+    @video_count = "This channel has a total number of #{item.fetch("statistics").fetch("videoCount")}."
+    @subscriber_count = "The this channel has #{item.fetch("statistics").fetch("subscriberCount")} total subscribers."
   end
 
 end
@@ -92,3 +78,5 @@ end
 
   #    "refresh_token": 
  
+  #
+  
