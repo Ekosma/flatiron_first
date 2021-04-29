@@ -1,8 +1,12 @@
 require_relative 'channel.rb'
 
 def intro
-    puts "Welcome to the Youtube Channel CLI information search! Please select from the following options!"
-    puts "Type '1' to search by channel or type '2' to close the application"
+    puts ""
+    puts "======================================================================"
+    puts "=       Welcome to the Youtube Channel CLI information search!       =" 
+    puts "=            Please select from the following options!               ="
+    puts "= Type '1' to search by channel or type '2' to close the application ="
+    puts "======================================================================"
     user_input = gets.strip
         while user_input != '1' && user_input != '2'
             puts "That was not a valid entry. Please Type '1' to search by channel or type '2' to close the application"
@@ -19,17 +23,16 @@ def enter_channel_name
     puts "Please enter the name of a channel that you would like to learn more about."
     @user_input = gets.strip
     @channel = Channel.new(@user_input)
-        #if channel == true
-        
+        if @channel != nil
             channel_options
-        #else
-            #puts "I'm sorry. I could not find that channel. Please enter a channel or type close to leave the application"
+        else 
+            puts "I'm sorry. I could not find that channel. Please enter a channel or type close to leave the application"
                 #if !close 
                     #enter_channel_name
                 #else 
                     #close
                 #end
-        #end
+        end
 end
 
 def channel_options
@@ -62,7 +65,7 @@ def channel_options
 end
 
 def view_count
-    puts "#{(@channel.view_count)}"
+    puts "#{(@channel.video_count)}"
     puts "Please type '1' to return to the option menu,'2' to input a new channel search, or '3' to close."
     user_input = gets.strip
     while user_input != '1' && user_input != '2' && user_input != '3'
@@ -152,7 +155,9 @@ def subscriber_count
 end
 
 def close
-    puts "Thank you for trying the Youtube Channel CLI information search!"
+    puts "======================================================================"
+    puts "=  Thank you for trying the Youtube Channel CLI information search!  ="
+    puts "======================================================================"
     exit(true) 
 end
 
@@ -160,5 +165,5 @@ intro()
 
 
 
-#print(channel.name) DO NO USE
-#print(channel.id) DO NOT USE
+ 
+#print(channel.id) 

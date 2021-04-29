@@ -26,7 +26,7 @@ SCOPE = Google::Apis::YoutubeV3::AUTH_YOUTUBE_READONLY
 
 class Channel
 
-  attr_accessor :name, :id, :view_count, :date_created, :description
+  attr_accessor :name, :id, :view_count, :date_created, :description, :video_count, :subscriber_count
 
   def initialize(channel_name)
     @channel_name = channel_name
@@ -63,20 +63,16 @@ class Channel
     @view_count = "The total views for this channel is: #{item.fetch("statistics").fetch("viewCount")}."
     @date_created = "This channels was created: #{item.fetch("snippet").fetch("publishedAt")}."
     @description = "This channels description is the following: #{item.fetch("snippet").fetch("description")}."
-    @video_count = "This channel has a total number of #{item.fetch("statistics").fetch("videoCount")}."
-    @subscriber_count = "The this channel has #{item.fetch("statistics").fetch("subscriberCount")} total subscribers."
+    @video_count = "This channel has a total number of #{item.fetch("statistics").fetch("videoCount")} videos."
+    @subscriber_count = "The this channel has around #{item.fetch("statistics").fetch("subscriberCount")} total subscribers."
   end
 
 end
 
-#foo = service.list_playlists('contentDetails,player,snippet', {id: 'orszXGFn_9s'}).to_json
-#bar = JSON.parse(foo).fetch("items")[0]
+
+
+
 
   # puts ("This channel's ID is #{item.fetch("id")}. " +
     #       "Its title is '#{item.fetch("snippet").fetch("title")}', and it has " +
     #       "#{item.fetch("statistics").fetch("viewCount")} views.")
-
-  #    "refresh_token": 
- 
-  #
-  
