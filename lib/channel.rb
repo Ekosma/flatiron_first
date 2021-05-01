@@ -26,7 +26,10 @@ SCOPE = Google::Apis::YoutubeV3::AUTH_YOUTUBE_READONLY
 
 class Channel
 
-  attr_accessor :name, :id, :view_count, :date_created, :description, :video_count, :subscriber_count
+  attr_accessor :name, :id, :view_count, :date_created, :description, :video_count, :subscriber_count, :all_items
+
+  $all_channels = []
+  $all_channels_and_items = {}
 
   def initialize(channel_name)
     @channel_name = channel_name
@@ -34,6 +37,7 @@ class Channel
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = authorize
     channels_info_by_username(service, 'snippet,contentDetails,statistics', for_username: @channel_name)
+    @all_items = []
   end
 
   def authorize
@@ -59,13 +63,36 @@ class Channel
     response = service.list_channels(part, params).to_json
     item = JSON.parse(response).fetch("items")[0]
     @name = item.fetch("snippet").fetch("title")
-    @id = item.fetch("id")
+    #@id = item.fetch("id")
     @view_count = "The total views for this channel is: #{item.fetch("statistics").fetch("viewCount")}."
-    @date_created = "This channels was created: #{item.fetch("snippet").fetch("publishedAt")}."
-    @description = "This channels description is the following: #{item.fetch("snippet").fetch("description")}."
+    @date_created = "This channel was created: #{item.fetch("snippet").fetch("publishedAt")}."
+    @description = "This channel's description is the following: '#{item.fetch("snippet").fetch("description")}'."
     @video_count = "This channel has a total number of #{item.fetch("statistics").fetch("videoCount")} videos."
     @subscriber_count = "The this channel has around #{item.fetch("statistics").fetch("subscriberCount")} total subscribers."
   end
+
+  def all_instance_items
+    @all_items << @view_count
+    @all_items << @date_created
+    @all_items << @description
+    @all_items << @video_count
+    @all_items << @subscriber_count
+    @all_items
+  end
+
+  def all_channels
+    $all_channels
+  end
+  
+  #def all_channels_and_items
+    #$all_channels_and_items
+  #end
+
+  #def all_channels_and_items
+    #all_channels_and_items = Hash.new(@channel)
+    #all_channels_and_items[@name] = "foo"
+    #all_channels_and_items
+  #end
 
 end
 
