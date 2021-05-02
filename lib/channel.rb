@@ -29,7 +29,7 @@ class Channel
   attr_accessor :name, :id, :view_count, :date_created, :description, :video_count, :subscriber_count, :all_items
 
   $all_channels = []
-  $all_channels_and_items = {}
+  $all_channels_and_items = []
 
   def initialize(channel_name)
     @channel_name = channel_name
@@ -94,6 +94,10 @@ class Channel
     #all_channels_and_items
   #end
 
+  def all_channels_and_items 
+    $all_channels_and_items 
+  end
+  
 end
 
 
