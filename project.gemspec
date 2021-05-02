@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 
 Gem::Specification.new do |spec|
-  spec.name          = "youtube_channel_cli-information_search"
+  spec.name          = "youtube_channel_cli_information_search"
   spec.version       = "1"
   spec.authors       = ["ekosma"]
   spec.email         = ["evelyn.a.kosma@gmail.com"]
