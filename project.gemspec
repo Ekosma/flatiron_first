@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["evelyn.a.kosma@gmail.com"]
 
   spec.summary       = "This Ruby Gem provides a CLI to search for information on your favorite Youtube Channels."
-  spec.description   = "This Ruby Gem provides a CLI to search for information on your favorite Youtube Channels.}"
+  spec.description   = "This Ruby Gem provides a CLI to search for information on your favorite Youtube Channels."
   spec.homepage      = "https://github.com/Ekosma/flatiron_first"
   spec.license       = "MIT"
 
