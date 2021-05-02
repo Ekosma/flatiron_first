@@ -4,13 +4,13 @@ This Ruby Gem provides a CLI to search for information on your favorite Youtube 
 
 ## Installation
 
-    $ gem install Youtube Channel CLI information search
+    $ gem install youtube_channel_cli-information_search-1
 
 ## Usage
 
 Type the below and follow the on screen prompts.
 
-    $ youtube-channel-cli-information-search
+    $ youtube_channel_cli-information_search
 
 ## Development
 
