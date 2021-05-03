@@ -27,7 +27,7 @@ class Project::Cli
             #print(e)
             puts "I'm sorry. I could not find that channel."
             puts "Please enter the name of a channel that you would like to learn more about."
-            puts "#{@user_input}, #{@channel}"
+            #puts "#{@user_input}, #{@channel}"
             retry
         else
             channel_options
