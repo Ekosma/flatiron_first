@@ -74,13 +74,13 @@ class Project::Cli
             all_channels
         elsif user_input == '8'
             all_channels_and_items
-        elsif user_input == '8'
+        elsif user_input == '9'
             close
         end
     end
 
     def view_count
-        puts "#{(@channel.video_count)}"
+        puts "#{(@channel.view_count)}"
         where_to_next
     end
 
